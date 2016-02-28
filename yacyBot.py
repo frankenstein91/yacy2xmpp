@@ -23,7 +23,7 @@ class YacyJabberBot(JabberBot):
         return str(datetime.datetime.now())
 
     @botcmd
-    def suchen(self,mess,args):
+    def yacyen(self,mess,args):
         """Bei Yacy suchen"""
         YacyServer = "http://search.yacy.de"
         url = urlopen(YacyServer + "/yacysearch.json?query=" + args).read()
@@ -38,3 +38,9 @@ class YacyJabberBot(JabberBot):
             raus = raus + "Das war jetzt aber nur ein Test!"
         return str(raus.encode('utf-8'))
 
+    @botcmd
+    def loklak(self,mess,args):
+        """Gibt die URL zu loklak aus"""
+        user = self.get_sender_username(mess)
+        text = "Hallo " + user + " hier ist dein Link zu LokLak\nEnglish: http://loklak.org/"
+        return text
