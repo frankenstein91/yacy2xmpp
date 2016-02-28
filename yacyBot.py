@@ -49,7 +49,7 @@ class YacyJabberBot(JabberBot):
     def loklaken(self,mess,args):
         """Bei loklak suchen"""
         loklakServer = "http://loklak.org"
-        url = urlopen(loklakServer + "/api/search.json?q=" + args).read()
+        url = urlopen(loklakServer + "/api/search.json?q=" + args.replace(" ","+")).read()
         suche = json.loads(url)
         raus = ""
         for item in suche["statuses"][:10]:
