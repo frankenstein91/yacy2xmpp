@@ -34,5 +34,7 @@ class YacyJabberBot(JabberBot):
             raus = raus + "\n Pup. Date: " + item["pubDate"] + "\n\n"
         f = open("debug2.txt", "w")
         f.write(raus.encode('utf-8'))
+        if "test" in args or "Test" in args or "TEST" in args:
+            raus = raus + "Das war jetzt aber nur ein Test!"
         return str(raus.encode('utf-8'))
 
