@@ -44,3 +44,14 @@ class YacyJabberBot(JabberBot):
         user = self.get_sender_username(mess)
         text = "Hallo " + user + " hier ist dein Link zu LokLak\nEnglish: http://loklak.org/"
         return text
+
+    @botcmd
+    def loklaken(self,mess,args):
+        """Bei loklak suchen"""
+        loklakServer = "http://loklak.org"
+        url = urlopen(loklakServer + "/api/search.json?q=" + args).read()
+        suche = json.loads(url)
+        raus = ""
+        for item in suche["statuses"][:10]:
+            raus = raus + "@" + item["screen_name"] + ": " + item["text"] + "\n" + item["link"] + "\n\n"
+        return str(raus.encode('utf-8'))
