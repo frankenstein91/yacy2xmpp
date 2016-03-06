@@ -55,3 +55,10 @@ class YacyJabberBot(JabberBot):
         for item in suche["statuses"][:10]:
             raus = raus + "@" + item["screen_name"] + ": " + item["text"] + "\n" + item["link"] + "\n\n"
         return str(raus.encode('utf-8'))
+
+    @botcmd
+    def getbot(self,mess,args):
+        """Gibt den Link zum Download aus"""
+        url = "https://github.com/frankenstein91/yacy2xmpp"
+        raus = "Hallo" + self.get_sender_username(mess) + "\nYou can easily download this Bot from Github.\n" + url
+        return str(raus.encode('utf-8'))
